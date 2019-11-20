@@ -120,7 +120,7 @@ def main():
                 win.map()
                 width = win.get_geometry().width
                 height = 1
-                raw = win.get_image(0, 0, width, height, X.ZPixmap, 0xffffffff)
+                raw = win.get_image(0, 1, width, height, X.ZPixmap, 0xffffffff)
                 image = Image.frombytes('RGB', (width, height), raw.data, 'raw', 'BGRX')
                 colors = image.getcolors()
                 if colors is None:
