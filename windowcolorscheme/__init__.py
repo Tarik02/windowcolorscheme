@@ -27,6 +27,12 @@ def reload_config():
     ])
 
 
+def get_foreground(background: str):
+    r, g, b = [float(i) for i in background.split(',')]
+    lum = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255
+    return '255,255,255' if lum < 0.5 else '0,0,0'
+
+
 def set_window_config(window_class, name, color):
     if cached_data.get(name) == color:
         return False
@@ -70,6 +76,7 @@ def set_window_config(window_class, name, color):
         scheme.add_section('Colors:Window')
     scheme.set('General', 'Name', 'windowcolorscheme_' + name)
     scheme.set('WM', 'activeBackground', color)
+    scheme.set('WM', 'activeForeground', get_foreground(color))
     scheme.set('Colors:Window', 'BackgroundNormal', color)
     with open(
             os.environ['HOME'] + f'/.local/share/color-schemes/windowcolorscheme_{name}.colors',
