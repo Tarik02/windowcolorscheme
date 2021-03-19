@@ -19,7 +19,7 @@ setup(
     packages=['windowcolorscheme'],
     install_requires=[
         'dbus-python==1.2.12',
-        'Pillow==6.2.1',
+        'Pillow==8.1.1',
         'python-xlib==0.25',
         'six==1.13.0',
     ],
